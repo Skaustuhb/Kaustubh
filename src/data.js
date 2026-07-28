@@ -2,9 +2,8 @@
 
 export const profile = {
   name: "Kaustubh Sharma",
-  role: "ERPNext Developer & Architect",
+  role: "ERPNext Developer",
   subrole: "Frappe Framework · Custom Doctypes · Multi-Site Sync · React Portals",
-  namingSeries: "KS-DEV-2026-001",
   location: "Jaipur, India",
   email: "Skaustubh0117@gmail.com",
   phone: "+91 94130 64342",
@@ -12,9 +11,9 @@ export const profile = {
   github: "https://github.com/Skaustuhb",
   summary:
     "Full-cycle ERPNext Developer and Solutions Architect specializing in core Frappe framework engineering, cross-site document synchronization engines, workflow fail-safes, and high-performance React frontends. Proven track record in designing scalable Doctypes, multi-tenant data pipelines, and enterprise self-service portals from schema definition to production deployment.",
-  status: "Available for Architecture & Enterprise ERP Solutions",
+  status: "Available for Software Development & Enterprise ERP Solutions",
   stats: [
-    { label: "ERPNext Projects Shipped", value: "12+" },
+    { label: "Software Projects Shipped", value: "20+" },
     { label: "Sync Pipeline Uptime", value: "99.9%" },
     { label: "Cost Calculation Speedup", value: "65%" },
   ],

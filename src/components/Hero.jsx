@@ -2,15 +2,15 @@ import { useState } from "react";
 import { profile } from "../data";
 import { FadeIn } from "./MotionWrapper";
 import { Github, Linkedin } from "./SocialIcons";
-import { 
-  MapPin, 
-  Mail, 
-  Phone, 
-  ArrowRight, 
-  Copy, 
-  Check, 
-  Activity, 
-  ShieldCheck 
+import {
+  MapPin,
+  Mail,
+  Phone,
+  ArrowRight,
+  Copy,
+  Check,
+  Activity,
+  ShieldCheck
 } from "lucide-react";
 
 export default function Hero() {
@@ -105,7 +105,6 @@ export default function Hero() {
                 <span className="h-3 w-3 rounded-full bg-red-500/80" />
                 <span className="h-3 w-3 rounded-full bg-amber/80" />
                 <span className="h-3 w-3 rounded-full bg-sync/80" />
-                <span className="ml-2 font-mono text-xs text-mist-400">system_record.json</span>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-sync bg-sync/10 px-2 py-0.5 rounded border border-sync/20">
                 <Activity className="h-3.5 w-3.5 animate-pulse" />
@@ -115,10 +114,6 @@ export default function Hero() {
 
             {/* Record Fields */}
             <div className="space-y-3.5">
-              <div className="flex items-start justify-between gap-4 border-b border-ink-800 pb-2.5">
-                <span className="shrink-0 text-xs text-mist-400">SERIES_ID</span>
-                <span className="text-right text-xs font-semibold text-sync">{profile.namingSeries}</span>
-              </div>
 
               <div className="flex items-start justify-between gap-4 border-b border-ink-800 pb-2.5">
                 <span className="shrink-0 text-xs text-mist-400 flex items-center gap-1.5">
