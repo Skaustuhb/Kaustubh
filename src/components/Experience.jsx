@@ -1,59 +1,95 @@
 import { experience } from "../data";
 import { SectionHeading } from "./Skills";
+import { StaggerContainer, StaggerItem } from "./MotionWrapper";
+import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="border-t border-ink-600">
-      <div className="mx-auto max-w-6xl px-6 py-20">
-        <SectionHeading eyebrow="Sync Log" title="Experience" />
+    <section id="experience" className="border-t border-ink-700/60 relative py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          eyebrow="System Log"
+          title="Career Execution & Impact"
+          subtitle="Track record in enterprise ERPNext implementations, custom Frappe modules, and full-stack software development."
+        />
 
-        <div className="relative">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-ink-600" aria-hidden="true" />
-          <ol className="space-y-10">
+        <div className="relative mt-12">
+          {/* Vertical timeline spine */}
+          <div
+            className="absolute left-3.5 sm:left-[19px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-sync via-ink-600 to-ink-800"
+            aria-hidden="true"
+          />
+
+          <StaggerContainer className="space-y-12">
             {experience.map((job, i) => (
-              <li key={i} className="relative pl-9">
+              <StaggerItem key={i} className="relative pl-10 sm:pl-14">
+                {/* Node indicator dot */}
                 <span
-                  className={`absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-2 ${
+                  className={`absolute left-0 sm:left-2 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 bg-ink-950 shadow-lg ${
                     job.status === "active"
-                      ? "border-sync bg-ink-900"
-                      : "border-mist-400 bg-ink-900"
+                      ? "border-sync shadow-sync/20"
+                      : "border-ink-600"
                   }`}
                   aria-hidden="true"
                 >
-                  {job.status === "active" && (
-                    <span className="absolute inset-[3px] rounded-full bg-sync" />
+                  {job.status === "active" ? (
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sync opacity-75"></span>
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-sync"></span>
+                    </span>
+                  ) : (
+                    <span className="h-2 w-2 rounded-full bg-mist-400" />
                   )}
                 </span>
 
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-xs text-mist-400">
-                  <span>{job.period}</span>
-                  <span
-                    className={`rounded-sm px-1.5 py-0.5 uppercase tracking-wider ${
-                      job.status === "active"
-                        ? "bg-sync/10 text-sync"
-                        : "bg-ink-700 text-mist-300"
-                    }`}
-                  >
-                    {job.status === "active" ? "status: active" : "status: synced"}
-                  </span>
+                {/* Job Card */}
+                <div className="rounded-xl border border-ink-700/80 bg-ink-900/80 p-6 sm:p-7 shadow-lg backdrop-blur-sm transition-all hover:border-sync/40">
+                  {/* Status & Period Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink-800 pb-3 font-mono text-xs text-mist-400">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5 text-sync" />
+                      <span>{job.period}</span>
+                    </div>
+                    <span
+                      className={`rounded px-2 py-0.5 font-semibold uppercase tracking-wider ${
+                        job.status === "active"
+                          ? "bg-sync/10 text-sync border border-sync/30"
+                          : "bg-ink-800 text-mist-400 border border-ink-700"
+                      }`}
+                    >
+                      {job.status === "active" ? "STATUS: ACTIVE" : "STATUS: SYNCED"}
+                    </span>
+                  </div>
+
+                  {/* Title & Company */}
+                  <div className="mt-4 flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-mist-100">
+                      {job.role}
+                    </h3>
+                    <div className="flex items-center gap-1.5 font-mono text-xs font-semibold text-sync">
+                      <Briefcase className="h-3.5 w-3.5" />
+                      <span>{job.company}</span>
+                    </div>
+                  </div>
+
+                  <p className="mt-1 flex items-center gap-1.5 font-mono text-xs text-mist-400">
+                    <MapPin className="h-3 w-3 text-mist-400" />
+                    <span>{job.place}</span>
+                  </p>
+
+                  {/* Highlights List */}
+                  <ul className="mt-5 space-y-3">
+                    {job.highlights.map((point, j) => (
+                      <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-mist-200">
+                        <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-sync" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <h3 className="mt-2 font-display text-xl font-semibold text-mist-100">
-                  {job.role} <span className="text-mist-400">&middot; {job.company}</span>
-                </h3>
-                <p className="mt-0.5 font-mono text-xs text-mist-400">{job.place}</p>
-
-                <ul className="mt-3 space-y-2">
-                  {job.points.map((point, j) => (
-                    <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-mist-300">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-500" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerContainer>
         </div>
       </div>
     </section>
